@@ -58,3 +58,7 @@ $('body').on({
         closeMenu();
     }
 });
+
+$('.container-fluid').css({
+    'min-height': document.getElementsByTagName('body')[0].scrollHeight+'px'
+})
