@@ -1,5 +1,5 @@
-
-function openMenu(){
+function openMenu() {
+    $('.menu').show();
     $('.wrapper').addClass('wrapper-open');
     $('.content').addClass('content-open');
     $('.container-fluid').css({
@@ -10,7 +10,7 @@ function openMenu(){
     });
 }
 
-function closeMenu(){
+function closeMenu() {
     $('.wrapper').removeClass('wrapper-open');
     $('.content').removeClass('content-open');
     $('.container-fluid').css({
@@ -22,20 +22,29 @@ function closeMenu(){
     });
 }
 
-function toggleMenu(){
-    var isOpen=$('body').data('isOpen');
+function toggleMenu() {
+    var isOpen = $('body').data('isOpen');
 
-    if(isOpen){
+    if (isOpen) {
         closeMenu();
-    }else{
+    } else {
         openMenu();
     }
 }
 
 //openMenu();
 
-var userAgent=window.navigator.userAgent;
+var userAgent = window.navigator.userAgent;
 
-if(userAgent.indexOf('Mobile')<0){
-    window.location.href="404.html";
+if (userAgent.indexOf('Mobile') < 0) {
+    window.location.href = "404.html";
 }
+
+$('body').on({
+    'swiperight': function () {
+        openMenu();
+    },
+    'swipeleft': function () {
+        closeMenu();
+    }
+});
