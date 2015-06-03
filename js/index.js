@@ -1,25 +1,35 @@
 function openMenu() {
+    var scrollTop=$('.container-fluid').scrollTop();
+
     $('.menu').show();
-    $('.wrapper').addClass('wrapper-open');
     $('.content').addClass('content-open');
+
     $('.container-fluid').css({
         'overflow': 'hidden'
     });
+
     $('body').data({
-        'isOpen': true
+        'isOpen': true,
+        'scrollTop': scrollTop
     });
+
+    $('.content').scrollTop(scrollTop);
 }
 
 function closeMenu() {
-    $('.wrapper').removeClass('wrapper-open');
+    var data=$('body').data();
+
     $('.content').removeClass('content-open');
     $('.container-fluid').css({
         'overflow': 'auto',
         'overflow-x': 'hidden'
     });
+
     $('body').data({
         'isOpen': false
     });
+
+    $('.container-fluid').scrollTop(data.scrollTop);
 }
 
 function toggleMenu() {
